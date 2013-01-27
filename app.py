@@ -11,9 +11,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def go():
-    query = "picard android"
+    query_file_content = ''
     if os.path.exists('query.txt'):
-        query = open('query.txt', 'r').read()
+        query_file_content = open('query.txt', 'r').read()
+
+    query = query_file_content or "picard smartphone"
 
     url = "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q={0}".format(query)
     app.logger.debug(url)
