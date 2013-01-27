@@ -21,7 +21,7 @@ def go():
     images = [(i, json.dumps(i)) for i in json.loads(r.text)['responseData']['results']]
     return render_template("index.html", images=images)
 
-@app.route('/set_query/<query>')
+@app.route('/<query>')
 def write_query(query):
     open('query.txt', 'w').write(query)
     return 'Query set to "{0}"'.format(query)
