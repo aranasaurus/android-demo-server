@@ -11,6 +11,8 @@ Usage
 Visit '/set/<query>' in a browser with the server running to set the query that will be used to query
 the Google Image Search when '/' is accessed.
 
+Visit '/clear' to reset the query back to the default.
+
 Accessing '/' from the [client app](http://github.com/thatryana/android-demo-client/) will allow the
 user to tap on an image to view some of its json data in a Native TableView.
 
