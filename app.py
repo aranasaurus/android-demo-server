@@ -11,11 +11,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def go():
-    query_file_content = ''
+    query = "picard smartphone"
     if os.path.exists('query.txt'):
-        query_file_content = open('query.txt', 'r').read()
-
-    query = query_file_content or "picard smartphone"
+        query = open('query.txt', 'r').read()
 
     url = "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q={0}".format(query)
     app.logger.debug(url)
@@ -28,6 +26,12 @@ def go():
 def write_query(query):
     open('query.txt', 'w').write(query)
     return 'Query set to "{0}"'.format(query)
+
+@app.route('/clear/')
+def clear_query():
+    if os.path.exists('query.txt'):
+        os.remove('query.txt')
+    return 'Query cleared.'
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
