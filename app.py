@@ -7,15 +7,14 @@ from requests.exceptions import ConnectionError
 from flask import Flask, render_template
 
 app = Flask(__name__)
-app.debug = True
+#app.debug = True
 
 @app.route('/')
 def go():
+    query = "picard android"
     if os.path.exists('query.txt'):
         query = open('query.txt', 'r').read()
 
-    if not query:
-        query = "picard android"
     url = "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q={0}".format(query)
     app.logger.debug(url)
 
