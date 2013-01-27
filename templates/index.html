@@ -1,16 +1,31 @@
 <!doctype html>
 <html>
-<body>
-    <ul style="list-style: none;">
-    {% for image in images %}
-        <li><img src="{{ image[0].url }}" onClick="return handleClick({{ image[1] }});" /></li>
-    {% endfor %}
-    </ul>
-    <script type="text/javascript">
-        var handleClick = function(data) {
-            Android.showToast(JSON.stringify(data));
-            return false;
-        };
-    </script>
-</body>
+    <head>
+    <style>
+        body {
+            background-color: black;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            width: 100%
+        }
+    </style>
+    </head>
+    <body>
+        <ul style="list-style: none;">
+        {% for image in images %}
+            <li><img src="{{ image[0].url }}" onClick="return handleClick({{ image[1] }});" /></li>
+        {% endfor %}
+        </ul>
+        <script>
+            var handleClick = function(data) {
+                Android.showToast(JSON.stringify(data));
+                return false;
+            };
+        </script>
+    </body>
 </html>
