@@ -13,15 +13,17 @@ app.debug = True
 def go():
     if os.path.exists('query.txt'):
         query = open('query.txt', 'r').read()
-    else:
+
+    if not query:
         query = "picard android"
-    url = "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q={0}"
+    url = "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q={0}".format(query)
+    app.logger.debug(url)
 
     r = requests.get(url.format(query))
     images = [(i, json.dumps(i)) for i in json.loads(r.text)['responseData']['results']]
     return render_template("index.html", images=images)
 
-@app.route('/<query>')
+@app.route('/set/<query>')
 def write_query(query):
     open('query.txt', 'w').write(query)
     return 'Query set to "{0}"'.format(query)
