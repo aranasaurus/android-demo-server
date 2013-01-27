@@ -11,7 +11,7 @@ app.debug = True
 
 @app.route('/')
 def go():
-    query = "picard smartphone"
+    query = "this is data"
     url = "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q={0}"
 
     r = requests.get(url.format(query))
