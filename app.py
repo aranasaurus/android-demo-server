@@ -25,13 +25,13 @@ def go():
 @app.route('/set/<query>')
 def write_query(query):
     open('query.txt', 'w').write(query)
-    return 'Query set to "{0}"'.format(query)
+    return 'Query set to "{0}". <a href="/">Return</a>'.format(query)
 
 @app.route('/clear/')
 def clear_query():
     if os.path.exists('query.txt'):
         os.remove('query.txt')
-    return 'Query cleared.'
+    return 'Query cleared. <a href="/">Return</a>'
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.

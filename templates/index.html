@@ -24,7 +24,11 @@
         </ul>
         <script>
             var handleClick = function(data) {
-                Android.loadItem(JSON.stringify(data));
+                if (typeof Android === 'undefined') {
+                    alert(data);
+                } else {
+                    Android.loadItem(JSON.stringify(data));
+                }
                 return false;
             };
         </script>
