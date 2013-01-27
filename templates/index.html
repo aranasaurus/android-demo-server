@@ -2,7 +2,7 @@
 <body>
     <ul style="list-style: none;">
     {% for image in images %}
-        <li><img src="{{ image[0].url }}" onclick="return handleClick({{ image[1] }});" /></li>
+        <li><img src="{{ image[0].url }}" ontouchend="return handleClick({{ image[1] }});" /></li>
     {% endfor %}
     </ul>
     <script>
